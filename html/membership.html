@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../css/teamproject.css">
+    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+        box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(243, 243, 242, 0.623);
+        }
+        
+
+        .container {
+            padding: 30px;
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5c5e60;
+            text-decoration-line: underline overline;
+            text-decoration-color: rgba(255, 255, 9, 0.808);
+            text-decoration-style: double;
+            text-decoration-thickness: 2px;
+        }
+
+        .form-section {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .pas_font{
+            font-size: 12px;
+        }
+        .address,
+        .phone {
+            display: flex;
+            gap: 10px;  /* 간격 유지 */
+        }
+
+        #zipcode { /* 수정 */
+            width: 80px;
+            height: 15px;
+            text-align: center;
+        }
+
+        .address-details {
+            display: flex;
+            gap: 10px;
+        }
+        #address1 {
+        flex: 1; /* 주소 너비 늘림 */
+        }
+
+        #address2 {
+        width: 120px; /* 상세주소 너비 줄임 */
+        }
+
+        .birth-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-buttons {
+            text-align: center;
+            margin-top: 20px;
+    
+        }
+        .btn {
+        padding: 1px;
+        margin-block: 8px;
+        font-size: 14px;
+        background-color: #8a8a8a;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #88897e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.7;
+            background-color: rgba(255, 255, 9, 0.808);
+            color: black;
+        }
+        @media screen and (max-width: 500px){
+            .container{width: 100%;}
+        }
+
+    </style>
+
+    <!--우편번호 입력칸 시작-->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const zipbtn = document.querySelector("#zipbtn"); 
+            const zipcode = document.querySelector("#zipcode"); 
+            const address1 = document.querySelector("#address1"); 
+            const address2 = document.querySelector("#address2"); 
+
+            zipbtn.addEventListener("click", function () {
+                new daum.Postcode({
+                    oncomplete: function (data) { 
+                        zipcode.value = data.zonecode;
+
+                        let fullAddress = "";
+
+                        let extendAddress = "";
+
+                   
+                        if (data.userSelectedType === "R") {
+                            fullAddress = data.roadAddress;
+                        } else { 
+                            fullAddress = data.jibunAddress;
+                        }
+
+                        // 추가 건물명에 대한 설정
+                        if (data.userSelectedType === "R") {
+                            if (data.bname !== "") { 
+                                extendAddress += data.bname;
+                            }
+                            if (data.buildingName !== "") { 
+                                extendAddress += (extendAddress !== "") ? ", " + data.buildingName : data.buildingName;
+                            }
+                        }
+                        fullAddress += (extendAddress !== "") ? " (" + extendAddress + ")" : "";
+                        address1.value = fullAddress;
+                        address2.focus();
+                    }
+                }).open();
+
+            });
+        });
+    </script>
+    <!--우편번호 입력칸 끝-->
+
+</head>
+
+<body>
+    <div class="container">
+        <h2> ო 유채 회원가입 ო </h2>
+        <form action="">
+            <div class="form-section">
+                <label for="user-id">아이디 *</label>
+                <input type="text" id="user-id" required placeholder="아이디를 입력하세요.">
+
+                <label for="password">비밀번호 *</label>
+                <input class="pas_font" type="password" id="password" required placeholder="영문 대소/특수문자/숫자 중 2가지 이상 조합, 10~16">
+
+                <label for="password-confirm">비밀번호 확인 *</label>
+                <input type="password" id="password-confirm" required placeholder="같은 비밀번호를 한번 더 입력해주세요.">
+
+                <label for="name">이름 *</label>
+                <input type="text" id="name" required placeholder="이름을 입력해주세요.">
+
+                <label for="address">주소</label>
+                <div class="address">
+                    <input  style="width: 210px; height: 32px;" type="text" id="zipcode" placeholder="우편번호" required>
+                    <button style="width: 120px;height: 32px; margin-top: 0px;" type="button" class="btn" id="zipbtn">우편번호</button>
+                </div>
+
+                <div class="address-details">
+                    <input type="text" class="input1 iaddress" name="address1" id="address1" placeholder="주소" readonly>
+                    <input type="text" class="input1 iaddress" name="address2" id="address2" placeholder="상세주소">
+                </div>
+
+                <label for="mobile-phone">전화번호 *</label>
+                <div class="phone">
+                    <select id="mobile-area">
+                        <option value="010">010</option>
+                        <option value="070">070</option>
+                        <option value="031">031</option>
+                    </select>
+                    <input type="text" id="mobile-main" required maxlength="8">
+                </div>
+
+                <label for="email">이메일 *</label>
+                <input type="email" id="email" required>
+
+                <label>생년월일</label>
+                <div class="birth-date">
+                    <input type="radio" id="solar" name="calendar" value="solar" checked>
+                    <label for="solar">양</label>
+                    <input type="radio" id="lunar" name="calendar" value="lunar">
+                    <label for="lunar">음</label>
+                    <input type="text" placeholder="년도" maxlength="4">
+                    <input type="text" placeholder="월" maxlength="2">
+                    <input type="text" placeholder="일" maxlength="2">
+                </div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit"><a href="index.html">회원가입</a></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

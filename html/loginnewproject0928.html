@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        a{
+        text-decoration: none;    
+        text-align: center;
+        font-size: 15px;
+        color: gray; 
+        a:hover{
+            color:black;
+        }
+        
+       
+       }
+        body{
+            width:960px;
+            margin: 0 auto; 
+            display: flex;
+            justify-content: center;
+            
+            
+          
+        }
+        .smallwhboard{
+            
+            width:360px;
+            height:300px;
+            margin-top: 120px;
+            background-color:rgba(245, 248, 243, 0.24);
+            border: 1px solid black;
+            border-radius : 3px;
+            padding-left : 18px;
+           
+            
+            
+           
+        }
+        #logintext{
+            text-align:center;
+            margin-bottom: 30px;
+            margin-right: 30px;
+        }
+        .idnpwdinput{
+            margin-bottom: 7px;
+            
+        }
+        .idnpwdinput>input{
+            width: 90%;
+            padding: 10px;
+            border: rgb(205, 230, 200) solid 1px;
+            border-radius: 5px;
+           
+            
+        }
+          #onlybutton{
+            width:97%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgb(196, 233, 181);
+            margin-bottom: 25px;
+            background-color: rgb(196, 233, 181);
+        }
+           #onlybutton:hover{
+            background-color:rgba(176, 224, 154, 0.24);
+           }
+           .otherthings>.findidpwd{
+            padding-left: 100 px;
+            color:rgb(103, 196, 115);
+
+           }
+    </style>
+</head>
+<body>
+   <form method="post" action="modal2.html">
+    <div class="smallwhboard" >
+        <h2 div id="logintext">로그인</h2> 
+        
+        <div class="idnpwdinput">
+            <input type="text" placeholder="아이디" required></div>
+        <div class="idnpwdinput">
+            <input type="password" placeholder="비밀번호" required>
+        </div>
+        <button type="submit" id="onlybutton">로그인</button> 
+              <!-- div classotherthings에 있는 버튼(id onlybutton)이 초록색 로그인 버튼이고 
+               그 자식인 a태그 하이퍼링크는 현재 페이지로 설정 해놨으니 저 하이퍼링크만 수정하면 됩니다.-->
+        <div class="otherthings">
+            <a href ="./findidpwd0928.html" span="findidpwd">ID/비밀번호 찾기</a> 
+            
+            <a href ="membership.html" span="newmember">회원가입</a> 
+        </div>
+    
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/teamproject.css">
+    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
+    <style>
+      /* a태그 색상제거 */
+      a{color: inherit;}
+        /* 전체 박스사이즈 맞추기  */
+        *{box-sizing: border-box;}
+
+        /*배경부분 wrap*/
+        .wrap{ margin: 0 auto; text-align: center; padding-top: 150px;}
+        .head_wrap{width: 100% ;height: 50px;}
+        .main_wrap{width: 1000px; margin: 100px auto; text-align: left;}    
+        .footer_wrap{width: 100%;height: 150px; background-color: #595959;}
+        .width1200{width: 1200px; box-sizing: border-box; margin: 0 auto;}
+      
+        /*header수정부분 */
+        .fixid{position: fixed;top: 0; width: 100%; height: 150px;background-color: white; clear: both;}
+        .header{max-width: 100%; height: 50px; margin: 0 auto; display: flex; justify-content: space-between;}
+        .header .header_navbar_left{margin-top: 10px; margin-left: 20px; font-size: 25px; line-height: 50%;}
+        .header .header_navbar_left a{color: #595959;}
+        .header .header_navbar_right ul{margin-top: 15px;font-weight: 500;}
+        .header .header_navbar_right li{display: inline-block; margin:0 15px;}
+        
+        /*topnav수정부분 */
+        .topnav{height: 100px;padding-bottom: 20px; padding-top: 20px; font-size: 20px;}
+
+        .topnav_meun {
+          max-width: 90%;
+          overflow: hidden;
+          margin: 0px auto;
+          border-radius: 5px;
+        }
+        .topnav_meun > li {
+          width:20%;
+          float: left;
+          text-align: center;
+          line-height: 40px;
+          background-color: #4deb4d52;
+        }
+
+        .topnav_meun a {
+          color: black;
+          font-weight: 600;
+        }
+
+        .submenu > li {
+          line-height: 50px;
+          background-color:#fff;
+        }
+
+        .submenu {
+          height: 0;
+          overflow: hidden;
+        }
+
+        .topnav_meun > li:hover {
+          background-color: pink;
+          transition-duration: 0.3s;
+        }
+
+        .topnav_meun > li:hover .submenu {
+          height: 250px ;
+          transition-duration: 1s;}
+
+        .topnav_meun > li:hover .sub_ht{height: 150px;}
+
+        .manuBar{
+            display: none;
+            background-color: transparent;
+            font-size: 1.5rem;
+
+        }
+
+        /* main_content 게시판 수정부분 */
+        .main_title {margin-bottom: 30px;}
+        .main_title strong{font-size: 3rem;}
+        .main_title p{margin-top: 10px; font-size: 1.5rem;}
+
+        .notice_list{
+            width: 100%;
+            border-top: 2px solid black;
+            font-size: 0;
+        }
+
+        .notice_list>div {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notice_list>div.list_top{
+            border-bottom: 1px solid #999;
+            font-weight: 600;
+        }
+
+        .notice_list>div:last-child{
+            border-bottom: 1px solid black;
+        }
+
+        .notice_list>div>div{
+            display: inline-block;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .notice_list .num,
+        .notice_list .count,
+        .notice_list .writer,
+        .notice_list .date {width: 15%}
+
+        .notice_list .title{
+            width: 40%;
+            text-align: left;
+        }
+
+        .notice_list .list_top .title{
+            text-align: center;
+        }
+
+        .list_page{
+            margin-top: 30px;
+            text-align: center;
+        }
+        .list_page a{
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            box-sizing: border-box;
+            line-height: 30px;
+        }
+        .list_page .list_page_bt{
+            letter-spacing: -5px;
+            padding-right: 5px;
+        }
+
+        .notice_bt_wrap{margin-top: 30px; text-align: center;}
+        
+        .notice_bt_wrap a{
+        display: inline-block;
+        width: 150px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 2px;
+        font-size: 1.5rem;
+        }
+        .notice_bt_wrap .on{
+            color: #FFFFFF;
+            background-color: black;
+            margin-right: 5px;
+        }
+
+
+  /*footer수정부분 */
+  .footer{height: 150px; background-color: #595959}
+        .footer .footer_left{ float: left;}
+
+        .footer .footer_left li{display: inline-block; margin-bottom: 40px; margin-right: 70px;}
+
+        .footer p,
+        .footer .footer_left a{color: #FFFFFF; font-size: 15px;}
+
+        .footer .footer_right{float: right;}
+
+        .footer .footer_right li{display: inline-block; margin-right: 20px; margin-top: 10px;}
+
+        .footer p{text-align: left; clear: both; display: block; }
+
+               /* =============웹반응 수정공간==============*/
+
+               @media screen and (max-width: 1000px){
+            /* TOPNAV 부분수정 */
+            .topnav_meun{
+                display: none;
+             }
+            .header .header_navbar_left{margin-left: 5px;}
+            .header_navbar_right .Magnifier{
+                display: none !important;
+             }
+
+            .manuBar{
+                display: block;
+                float: left;
+                margin-left: 5px;
+                margin-top: 20px;
+                img {vertical-align:-8px;}
+             }
+            /* 중간에 main 콘텐츠 부분 */
+            .main_wrap,
+            .notice_list_wrap,
+            .main_title,
+            .list_page,
+            .notice_bt_wrap{
+                width: 100vw;
+            }
+
+            .notice_list_wrap{
+                padding: 0 30px;
+                min-width: 320px;
+                box-sizing: border-box;
+            }
+            .notice_list .num,
+            .notice_list .writer,
+            .notice_list .count{
+                display: none;
+            }
+            .notice_list .title{
+                width: 60%;
+            }
+            .notice_list .date{
+                width: 40%;
+            }
+         
+
+
+            /* footer수정부분 */
+
+            .footer{
+                width: 100%;
+                margin: 0 auto;
+                height: auto;
+            }
+
+            .footer .footer_left li ,
+            .footer p {margin: 5px 0px 0px 5px;}
+            .footer_right li{margin: 5px 5px 10px 0px;
+            }
+
+        }
+        /* (max-width: 1000px) 수정끝 */
+
+ 
+       @media screen and (max-width: 400px){
+
+            /* 헤더부분 수정 */
+            .header_title{font-size: 20px;}
+            .header .header_navbar_right li{display: inline-block; margin:0 5px;}
+
+            /* 메뉴바 수정부분 */
+            .manuBar{
+                display: block;
+                float: left;
+                margin-left: 5px;
+                margin-top: 20px;
+                font-size: 20px;
+                input{width: 100px;}
+             }
+             /* main 컨텐츠 수정부분 */
+             .notice_list .title,
+             .notice_list .date{
+                font-size: 15px;
+             }
+             .main_title strong{
+                font-size: 1.5rem;
+                margin-left: 20px
+             }
+             .main_title p{
+                display: none;
+             }
+             .list_page a{
+                width: 20px;
+                height: 20px;
+                font-size: 1rem;
+                line-height: 18px
+             }
+
+             .notice_bt_wrap a{
+                width: 100px;
+                font-size: 1rem;
+             }
+
+        } /* (max-width: 400px) 수정끝 */      
+
+
+        </style>
+</head>
+<body>
+  <form action="" onsubmit="return false;">
+  <div class="wrap">
+      <div class="fixid">
+      <div class="head_wrap">
+           <div class="header width1200">
+              <div class="header_navbar_left"><a href="../index.html"><img class="logo_img" width="30px" height="30px" src="../img/mainLogo.png"><span class="header_title">유채밭식물원</span><br><span style="font-size: 15px;">&nbsp;ucp botanical garden</span></a></div>
+
+
+              <div class="header_navbar_right">
+                  <ul>
+                      <li><a href="loginnewproject0928.html">로그인</a></li>
+                      <li><a href="membership.html">회원가입</a></li>
+                      <li class="Magnifier">
+                      <input type="text" placeholder="입력해주세요.">
+                          <button><i class="fa-solid fa-magnifying-glass">검색</i></button>
+                      </li>
+                      
+                  </ul>
+              </div>
+           </div><!--header 끝-->
+      </div><!--head_wrap 끝-->
+      <div class="manuBar">
+          <a href=""><img src="../img/menuBar.png" alt=""> 메뉴</a>
+          <input type="text" placeholder="입력해주세요.">
+          <button><i class="fa-solid fa-magnifying-glass">검색</i></button>
+      </div><!--반응형 메뉴버튼 끝-->
+      <div class="topnav width1200">
+                <ul class="topnav_meun width1200">
+                  <li><a href="#">식물원이야기</a>
+                      <ul class="submenu">
+                          <li><a href="#">식물원 소개</a></li>
+                          <li><a href="#">이용안내</a></li>
+                          <li><a href="#">식물원 현황</a></li>
+                          <li><a href="list.html">공지사항</a></li>
+                          <li><a href="#">고객게시판</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#">시설안내</a>
+                      <ul class="submenu">
+                          <li><a href="#">식물원센터</a></li>
+                          <li><a href="#">기프트샾</a></li>
+                          <li><a href="#">편의시설</a></li>
+                          <li><a href="#">포토존</a></li>
+                          <li><a href="#">주변명소</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#">식물정보</a>
+                      <ul class="submenu" >
+                          <li><a href="#">봄식물</a></li>
+                          <li><a href="#">여름식물</a></li>
+                          <li><a href="#">가을식물</a></li>
+                          <li><a href="#">겨울식물</a></li>
+                          <li><a href="#">다육식물</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#">축제정보</a>
+                      <ul class="submenu sub_ht">
+                          <li><a href="#">코스모스축제</a></li>
+                          <li><a href="#">핑크뮬리축제</a></li>
+                          <li><a href="#">축제예정안내</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#">방문안내</a>
+                      <ul class="submenu sub_ht">
+                          <li><a href="roadmap.html">오시는길</a></li>
+                          <li><a href="map.html">상세안내</a></li>
+                          <li><a href="#">자주하는질문</a></li>
+                        </ul>
+                  </li>
+                </ul>
+      </div><!--topnav끝-->
+  </div><!--fixid 끝-->
+
+         <div class="main_wrap"><!-- 중간에 내용 넣을부분 -->
+               <div class="main_title">
+                   <strong>공지사항</strong>
+                   <p>저희 수목원의 공지사항을 안내드립니다.</p>
+
+              </div>
+              <div class="notice_list_wrap">
+                        <div class="notice_list">
+                            <div class="list_top">
+                                <div class="num">번호</div>
+                                <div class="title">제목</div>
+                                <div class="writer">글쓴이</div>
+                                <div class="date">작성일</div>
+                                <div class="count">조회</div>
+                            </div>
+                            <div>
+                                <div class="num">5</div>
+                                <div class="title"><a href="view.html">글제목 들어가는란</a></div>
+                                <div class="writer">박준수</div>
+                                <div class="date">2024.09.29</div>
+                                <div class="count">119</div>
+                            </div>
+                            
+                            <div>
+                                <div class="num">4</div>
+                                <div class="title"><a href="view.html">핑크뮬리 축제일정</a></div>
+                                <div class="writer">유강훈</div>
+                                <div class="date">2024.09.28</div>
+                                <div class="count">299</div>
+                            </div>
+                            <div>
+                                <div class="num">3</div>
+                                <div class="title"><a href="view.html">코스모스 축제일정</a></div>
+                                <div class="writer">최소연</div>
+                                <div class="date">2024.09.27</div>
+                                <div class="count">318</div>
+                            </div>
+                            <div>
+                                <div class="num">2</div>
+                                <div class="title"><a href="view.html">직원을 구인합니다.</a></div>
+                                <div class="writer">원빈</div>
+                                <div class="date">2024.09.21</div>
+                                <div class="count">2984</div>
+                            </div>
+                            <div>
+                                <div class="num">1</div>
+                                <div class="title"><a href="view.html">나무심기 축제일정</a></div>
+                                <div class="writer">전지현</div>
+                                <div class="date">2024.09.01</div>
+                                <div class="count">8719</div>
+                            </div>
+ 
+                        </div><!-- notice_list 게시판 리스트 끝!!!-->
+               </div> <!-- notice_list_wrap 끝-->
+               <div class="list_page">
+                    <a href="#" class="list_page_bt first"><<</a>
+                    <a href="#" class="list_page_bt prev"><</a>
+                    <a href="#" class="num on">1</a>
+                    <a href="#" class="num">2</a>
+                    <a href="#" class="num">3</a>
+                    <a href="#" class="num">4</a>
+                    <a href="#" class="num">5</a>
+                    <a href="#" class="list_page_bt next">></a>
+                    <a href="#" class="list_page_bt last">>></a>
+               </div>
+
+               <div class="notice_bt_wrap">
+                   <a href="write.html" class="on">등록</a>
+               </div>
+         </div><!-- 중간에 내용 넣을 부분끝 -->
+
+        <div class="footer_wrap">
+          <footer class="footer width1200">
+                   <div class="footer_left">
+                      <ul>
+                       <li><a href="terms.html">이용약관</a></li>
+                       <li><a href="#">개인정보처리방침</a></li>
+                       <li><a href="#">이메일수집거부</a></li>
+                       <li><a href="#">저작권정책</a></li>
+                       <li><a href="#"></a></li>
+                      </ul>
+                  </div> <!--footer_left 끝-->
+           <div class="footer_right"> 
+              <ul>
+                  <li><a target="_blank" href="https://youtu.be/HLbvI5oJfSQ?si=GTuIYlH89ef79oeN"><i class="fa-brands fa-youtube fa-3x"></i></a></li>
+                  <li><a target="_blank" href="https://www.facebook.com/CLPArboretum/?locale=ko_KR"><i class="fa-brands fa-facebook fa-3x"></i></a></li>
+                  <li><a target="_blank" href="https://www.instagram.com/gardenbcj/"><i class="fa-brands fa-instagram fa-3x"></i></a></li>
+                  <li><a target="_blank" href="https://github.com/"><i class="fa-brands fa-github fa-3x"></i></a></li>
+              </ul>
+          </div><!--footer_right 끝-->
+              <p>(77777) 하이미디어특별자치도 소연시 준수구 강훈광장로 10 &nbsp;&nbsp;&nbsp; 대표전화: 031-777-7777</p><br>
+              <p>Copyright © JEONJU CITY. ALL RIGHTS RESERVED.</p><br>
+          </footer><!--footer끝-->
+      </div><!--footer_wrap끝-->
+  </div><!--wrap끝-->
+</form><!--form끝-->
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal</title>
+    <link rel="stylesheet" href="../css/teamproject.css">
+    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
+    <style>
+        /* 모달 기본 스타일 */
+        .modal {
+            display: none;
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(247, 250, 74, 0.3);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 30% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 700px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .image-main img{
+           width: 450px;
+           height: auto;
+           box-sizing: border-box;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-form button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #fbfe90;
+            color: black;
+            border: 1px solid black;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-form button i {
+            margin-right: 8px;
+        }
+
+        .login-form button:hover {
+            background-color: #fbfe90;
+            color: black;
+        }
+
+   
+        #openModal {
+            margin-bottom: 10px;
+            padding: 20px 30px;
+            background-color: #73cf6abb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+            font-size: 20px;
+        }
+
+        #openModal:hover {
+            background-color: #fbfe90;
+            color: black;
+        }
+
+        .center-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .image-main{
+            margin-bottom: 2%;
+        }
+        .center-second{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 600px){
+            body{
+                width: 100vw;
+            }
+             .image-main img{width: 100%;}
+             .modal-content{width: 80%;
+                margin-right: 10%;
+                margin-left: 10%;
+                box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 500px){
+            .center-container h1{font-size: 20px;}
+            #openModal{padding: 5px 0px;}
+            .modal-content h2{
+                font-size: 20px;
+            }
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <div class="center-container">
+            <div class="image-main">
+            <img src="../img/image3.jpg" alt="꽃 이미지">
+        </div>
+    </div>
+
+
+    <div class="wrap">
+        <!-- 모달 버튼 -->
+         <div class="center-container">
+        <h1>💚 유채밭 홈페이지를 찾아주셔서 감사합니다 💚</h1><br>
+    </div>
+        <div class="center-second">
+        <button id="openModal">홈페이지</button>
+    </div>
+
+
+        <!-- 모달 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2> 💛 유채밭 홈페이지로 들어가시려면 버튼을 눌러주세요 💛 </h2><br>
+                <form class="login-form">
+                    <button type="button" onclick="goToHomepage()">
+                        <i class="fa-solid fa-home"></i> 홈페이지 이동
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer_wrap">
+
+        </div>
+    </div><!--wrap끝-->
+
+
+    <script>
+        // 모달 열기 버튼
+        let modal = document.getElementById("myModal");
+        let btn = document.getElementById("openModal");
+        let span = document.getElementsByClassName("close")[0];
+
+        // 버튼 클릭 시 모달 열기
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // X 버튼 클릭 시 모달 닫기
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // 모달 외부 클릭 시 모달 닫기
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 홈페이지 이동 버튼 클릭 시 동작
+        function goToHomepage() {
+            alert('홈페이지로 이동중입니다!');
+            modal.style.display = "none";
+            // 실제 홈페이지 URL로 이동
+            window.location.href ="index_login.html";
+        }
+    </script>
+</body>
+</html>

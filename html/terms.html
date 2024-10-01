@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💛 유채밭 이용약관 💛</title>
+
+    <style>
+
+.check-container {
+    width: 70%;
+    margin: 0px auto;
+    padding: 5px;
+
+}
+
+.check-header{
+    text-align: center;
+}
+
+.check-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.check-buttons button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    font-size: 15px;
+    cursor: pointer;
+}
+.agree-button {
+    background-color: #69d76d;
+    color: white;
+}
+
+.disagree-button {
+    background-color: #ee554a;
+    color: white;
+}
+
+.agree-button:hover {
+    background-color: #3a8e3e;
+}
+
+.disagree-button:hover {
+    background-color: #dd3428
+}
+h4{
+    margin-bottom: 1px;
+}
+    </style>
+
+
+</head>
+<body>
+    <form action="../index.html">
+    <body>
+        
+        <div class="check-container">
+            <div class="check-header"><h1>이용약관</h1></div>
+            <div class="check-content">
+                <h3>- 이용약관 내용이 여기에 표시됩니다. 이는 사용자와 서비스 제공자 간의 권리와 의무를 규정한 문서입니다. -</h3>
+                <p>
+                    <h4>제1조(목적)</h4>
+                    이 약관은 유채밭 홈페이지(http://127.0.0.1:3000/html/index.html)를 이용하는데 따른<br>
+                    이용조건 및 “이용자”와 유채밭의 권리, 의무, 책임사항과 기타 필요한 사항 등을 규정하는 것을 목적으로 합니다. <br><br>
+                    <h4>제2조(이용약관의 효력) </h4>
+                    이 약관은 유채밭 홈페이지 화면에 게시하거나 전자우편, 기타의 방법으로 회원에게 공지함으로써 효력을 발생합니다.<br><br>
+                    <h4>제3조(약관의 명시와 개정)</h4>
+                    유채밭은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함),<br>
+                    전화번호, 전자우편주소, 사업자등록번호, 통신판매업신고번호, 개인정보관리책임자등을 “이용자”가 쉽게 알 수 있도록<br>
+                    “홈페이지”의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 “이용자”가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.<br><br>
+                    <h4>제4조(약관의 준칙)</h4>
+                    본 약관은 유채밭이 제공하는 서비스에 관한 이용규정 및 별도의 정책과 함께 적용됩니다.<br><br>
+                    <h4>제5조(이용 계약의 성립)</h4>
+                    이용계약은 “이용자”가 유채밭 홈페이지(모바일, PC) 내 온라인 예매에서 "예매를 위해 약관에 동의해주세요."의 문구 하단에<br>
+                    표시된 체크박스(약관 전체 동의, 개인정보 수집 및 이용안내, 유채밭 이용안내, 개인정보의 제3자 제공, 마케팅 정보수신)를 선택하여<br>
+                    확인하고 하단의 ‘다음’ 버튼을 누르면 동의하는 것으로 간주합니다.<br><br>
+                    
+                </p>
+            </div>
+            <div class="check-buttons">
+                <button class="agree-button" onclick="agreeTerms()">동의함</button>
+                <button class="disagree-button" onclick="disagreeTerms()">동의하지 않음</button>
+            </div>
+        </div>
+        
+        <script>
+            function agreeTerms() {
+                alert("이용약관에 동의하셨습니다.");
+            }
+        
+            function disagreeTerms() {
+                alert("이용약관에 동의하지 않으셨습니다. 서비스를 이용하실 수 없습니다.");
+            }
+        </script>
+        
+        </body>
+        </html>
+    </form>
+</body>
+</html>
